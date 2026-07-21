@@ -1,0 +1,12 @@
+# 本地 i18n 覆盖文件 - 覆盖 Hugo Blox 模块的默认翻译
+
+# Experience widget
+- id: experience
+  translation: 实习经历
+
+- id: present
+  translation: 至今
+
+# Education
+- id: education
+  translation: 教育经历
