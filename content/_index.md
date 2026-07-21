@@ -1,51 +1,51 @@
 ---
-title: 'Home'
-date: 2023-10-24
+title: '个人简历'
+date: 2026-01-15
 type: landing
 
-# Note: `username` refers to the user's folder name in `content/authors/`
+# 注意：`username` 指的是 `content/authors/` 下的用户文件夹名称
 
-# Page sections
+# 页面区块
 sections:
   - block: biography
     content:
       username: me
-      # Show a call-to-action button under your biography? (optional)
+      # 是否在个人简介下方显示操作按钮？(可选)
       button:
-        text: Download Résumé
-        url: uploads/resume.pdf
+        text: 下载简历
+        url: uploads/zhanglei_resume.html
     design:
       show_status: false
       spacing:
         padding: ['0', '0', '6rem', '0']
       banner:
-        # Upload your cover image to the `assets/media/` folder and reference it here
+        # 将您的封面图片上传到 `assets/media/` 文件夹并在此处引用
         filename: kalen-emsley-Bkci_8qcdvQ-unsplash.jpg
       biography:
-        # Customize the style of your biography text
+        # 自定义生物简介文本样式
         style: 'text-align: justify; font-size: 0.8em;'
-      # Avatar customization
+      # 头像自定义
       avatar:
-        size: large # Options: small (150px), medium (200px, default), large (320px), xl (400px), xxl (500px)
-        shape: rounded # Options: circle (default), square, rounded
+        size: large # 选项：small (150px), medium (200px, 默认), large (320px), xl (400px), xxl (500px)
+        shape: rounded # 选项：circle (默认), square, rounded
   - block: experience
     content:
       username: me
     design:
-      # Hugo date format
+      # Hugo日期格式
       date_format: 'January 2006'
-      # Education or Experience section first?
+      # 教育经历或工作经历优先展示？
       is_education_first: false
   - block: skills
     content:
-      title: Skills & Hobbies
+      title: 技能与特长
       username: me
   - block: awards
     content:
-      title: Awards
+      title: 荣誉与奖项
       username: me
   - block: languages
     content:
-      title: Languages
+      title: 语言能力
       username: me
 ---

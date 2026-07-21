@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曾磊 - 个人简历</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 1rem;
+        }
+        
+        .contact span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav {
+            background: #f8f9fa;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #666;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        nav a:hover {
+            color: #667eea;
+            background: rgba(102,126,234,0.05);
+            border-bottom-color: #667eea;
+        }
+        
+        main {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+        
+        .about-me {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .awards-list {
+            list-style: none;
+        }
+        
+        .awards-list li {
+            background: #fff3cd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .contact {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            main {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar">🧑‍💼</div>
+            <h1>曾磊</h1>
+            <div class="subtitle">金融学硕士 | 量化投资专家</div>
+            <div class="contact">
+                <span>📱 18173919278</span>
+                <span>📧 zenglei_0824@163.com</span>
+                <span>📍 厦门，中国</span>
+            </div>
+            <a href="#download" class="download-btn">下载完整简历</a>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#education">教育经历</a></li>
+                <li><a href="#experience">实习经历</a></li>
+                <li><a href="#awards">竞赛奖项</a></li>
+                <li><a href="#skills">专项技能</a></li>
+                <li><a href="#research">科研项目</a></li>
+                <li><a href="#campus">校园经历</a></li>
+            </ul>
+        </nav>
+        
+        <main>
+            <section id="about" class="section">
+                <h2>关于我</h2>
+                <div class="about-me">
+                    <p><strong>曾磊</strong>，金融学硕士，现居厦门。拥有丰富量化投资和金融工程实战经验，精通 Python、STATA、MATLAB 等工具，具备深厚的数学功底和数据分析能力。</p>
+                    
+                    <p>🎯 <strong>专业领域：</strong></p>
+                    <ul>
+                        <li>高频交易策略研究与开发</li>
+                        <li>金融数据建模与因子挖掘</li>
+                        <li>多资产配置策略优化</li>
+                        <li>订单流交易分析与应用</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="education" class="section">
+                <h2>教育经历</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024.9 – 2027.6</div>
+                        <div class="card">
+                            <h3>厦门大学经济学院 | 金融学硕士</h3>
+                            <p>GPA: 3.88/4.00 (排名1/93)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020.9 – 2024.6</div>
+                        <div class="card">
+                            <h3>四川大学经济学院 | 金融工程学士</h3>
+                            <p>GPA: 3.90/4.00 (排名3/73)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="experience" class="section">
+                <h2>实习经历</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026.07 – 2026.09</div>
+                        <div class="card">
+                            <h3>深圳证券交易所 | 会员管理部 金融工程实习生</h3>
+                            <ul>
+                                <li>围绕深证 ST 股票涨跌幅限制改革开展制度效果评估</li>
+                                <li>基于改革前后股票交易数据构建指标体系，分析涨跌停约束、流动性及波动变化</li>
+                                <li>发现改革后收盘涨停比例由 <span class="highlight">33.49%</span> 下降至 <span class="highlight">2.63%</span>，连续涨跌停显著减少</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2025.10 – 2026.05</div>
+                        <div class="card">
+                            <h3>星云至恒（厦门）私募基金管理有限公司 | 量化研究实习生</h3>
+                            <ul>
+                                <li>开展订单流交易研究与策略开发，基于 DolphinDB 高频数据进行策略复现和回测验证</li>
+                                <li>开发并测试订单流不平衡等多个潜在套利因子，支持策略的逻辑验证与迭代</li>
+                                <li>基于券商资产池构建多资产配置框架，复现多种风险平价改进模型；PCA 风险平价策略表现最优</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2025.07 – 2025.09</div>
+                        <div class="card">
+                            <h3>施耐德电气厦门开关有限公司 | 采购实习生</h3>
+                            <ul>
+                                <li>负责采购全流程数据管理与分析，制作月度调价报表</li>
+                                <li>独立对接供应商及公司内部部门进行高效协调</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023.10 – 2024.01</div>
+                        <div class="card">
+                            <h3>成都萌想科技有限公司 | 财务实习生</h3>
+                            <ul>
+                                <li>协助完成月度经营分析报告编制，主要负责财务数据整合</li>
+                                <li>参与 2024 年度预算编制全流程，整理历史费用数据</li>
+                                <li>协调部门完成政府补助申报材料汇编，助力公司成功获得 100 万元专项资金</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="awards" class="section">
+                <h2>竞赛奖项</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>全国大学生数学竞赛</h3>
+                        <p>• 一等奖 × 2 (2023, 2022)<br>• 二等奖 (2021)</p>
+                    </div>
+                    <div class="card">
+                        <h3>第十一届 "中金所杯" 全国大学生金融知识大赛</h3>
+                        <p>• 二等奖 (2025.12)</p>
+                    </div>
+                    <div class="card">
+                        <h3>"正大杯" 全国大学生市场调查与分析大赛</h3>
+                        <p>• 研究生组国家三等奖 (2025.05)<br>• 研究生组省级一等奖 (2025.04)</p>
+                    </div>
+                    <div class="card">
+                        <h3>全国大学生英语竞赛</h3>
+                        <p>• C 类三等奖 (2023.06)</p>
+                    </div>
+                    <div class="card">
+                        <h3>四川大学数学竞赛</h3>
+                        <p>• 一等奖 (2023.06)<br>• 二等奖 (2022.03)</p>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 30px;">
+                    <h3>其它荣誉</h3>
+                    <ul class="awards-list">
+                        <li>鸿儒奖学金 (全国20名获奖硕士生) (2025.09)</li>
+                        <li>国家奖学金 (top 0.2%) (2021.12)</li>
+                        <li>中国联通奖学金 (2026.04)</li>
+                        <li>厦门大学 "优秀三好学生" (top 2%) (2025.09)</li>
+                        <li>四川大学优秀学生 (2021.10)</li>
+                        <li>校优秀共青团员</li>
+                        <li>校优秀志愿者 (2024.09)</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="skills" class="section">
+                <h2>专项技能</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">中文 (母语)</div>
+                    <div class="skill-item">英语 (CET-6: 626, CET-4: 580)</div>
+                    <div class="skill-item">Python, R, STATA, MATLAB</div>
+                    <div class="skill-item">Office 套件 (高级)</div>
+                    <div class="skill-item">Adobe Premiere Pro (视频剪辑)</div>
+                    <div class="skill-item">期货从业人员资格证书</div>
+                </div>
+                
+                <div class="grid" style="margin-top: 30px;">
+                    <div class="card">
+                        <h3>项目成果</h3>
+                        <p>• 个人 B 站视频播放量突破 300 万<br>• 厦门大学新生杯田径赛研究生组男子 100 米第一名，1500 米第二名</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="research" class="section">
+                <h2>科研项目</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="card">
+                            <h3>企业人工智能水平对非效率投资的影响</h3>
+                            <p><strong>第二作者，《财务管理研究》，2025.7</strong></p>
+                            <ul>
+                                <li>基于中国 A 股上市公司数据，实证检验人工智能水平提升能显著减少企业非效率投资</li>
+                                <li>研究通过轻资产转型和无形资产数智化应用两条路径优化财务决策</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="card">
+                            <h3>"茉莉茶香"续千年非遗韵</h3>
+                            <p><strong>"正大杯" 第十五届全国大学生市场调查与分析大赛研究生组国家三等奖</strong></p>
+                            <ul>
+                                <li>通过 1000+ 份有效调查问卷得出 "非遗转化价值不足", "线上营销是主要推手" 等结论</li>
+                                <li>从政府、企业、茶农三方面提出改善建议</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="campus" class="section">
+                <h2>校园经历</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="card">
+                            <h3>厦门大学经济学科 WiserClub 量化金融组</h3>
+                            <p><strong>部长</strong> (2025.09 – 2026.09)</p>
+                            <ul>
+                                <li>构建多因子量化投资策略，年化超额收益率 14.90%</li>
+                                <li>参与智能投顾项目，研发全球资产配置交易系统</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="card">
+                            <h3>厦门大学经济学院青工部</h3>
+                            <p><strong>部门核心成员</strong> (2024.09 – 2025.06)</p>
+                            <ul>
+                                <li>组织 "朋辈导师&八高答疑", "暖冬义卖", "反诈宣传" 等志愿活动</li>
+                                <li>总志愿时长 40 小时</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="download" class="section">
+                <h2>下载完整简历</h2>
+                <p>您可以下载完整的简历文档，包括所有详细信息和附件。</p>
+                <a href="uploads/zhanglei_resume.pdf" class="download-btn">点击下载 PDF 简历</a>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 曾磊 - 个人简历 | 基于 HugoBlox 构建</p>
+            <p>手机: 18173919278 | 电子邮件: zenglei_0824@163.com</p>
+        </footer>
+    </div>
+</body>
+</html>
