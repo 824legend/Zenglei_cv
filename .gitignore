@@ -67,3 +67,6 @@ Desktop.ini
 
 *.log
 npm-debug.log*
+
+# 本地预览快照（hugo server 生成）
+dev_home.html

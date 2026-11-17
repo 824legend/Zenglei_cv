@@ -1,0 +1,523 @@
+/* ============================================================
+   曾磊 · 个人简历站 — 视觉增强层
+   在 Hugo Blox 默认主题之上叠加：品牌色、区块节奏、卡片质感、
+   时间线细节、打印优化。所有改动仅作用于本站，不修改主题模块。
+   ============================================================ */
+
+:root {
+  --ql-accent: #0f766e;          /* 主色：深青 */
+  --ql-accent-soft: #14b8a6;
+  --ql-accent-2: #0369a1;        /* 辅助色：深海蓝 */
+  --ql-ink: #0b1f2a;
+  --ql-hairline: rgba(15, 23, 42, 0.08);
+  --ql-card-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 14px 34px -22px rgba(15, 23, 42, 0.45);
+  --ql-card-shadow-hover: 0 2px 4px rgba(15, 23, 42, 0.06), 0 22px 46px -20px rgba(15, 23, 42, 0.38);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 锚点跳转时留出吸顶导航高度 */
+section[id],
+#profile,
+#top {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: rgba(15, 118, 110, 0.18);
+}
+
+/* ------------------------------------------------------------
+   1. 吸顶导航：磨砂玻璃 + 细描边
+   ------------------------------------------------------------ */
+.page-header nav {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  box-shadow: 0 1px 0 var(--ql-hairline), 0 12px 30px -22px rgba(15, 23, 42, 0.55) !important;
+  padding-top: 0.55rem !important;
+  padding-bottom: 0.55rem !important;
+}
+
+.dark .page-header nav {
+  background: rgba(11, 22, 33, 0.78) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 30px -22px rgba(0, 0, 0, 0.9) !important;
+}
+
+.page-header nav a {
+  letter-spacing: 0.02em;
+  font-size: 0.925rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.page-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: -0.35rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ql-accent), var(--ql-accent-soft));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-header nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ------------------------------------------------------------
+   2. 首屏：横幅、头像、姓名、下载按钮
+   ------------------------------------------------------------ */
+#section-resume-biography {
+  padding-bottom: 1rem !important;
+}
+
+/* 横幅加高并叠加柔和渐变，让头像与正文衔接更自然 */
+#section-resume-biography [class*="sm:h-64"] {
+  height: 11rem !important;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  #section-resume-biography [class*="sm:h-64"] {
+    height: 20rem !important;
+  }
+}
+
+#section-resume-biography [class*="sm:h-64"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 30, 45, 0.52) 0%,
+    rgba(9, 30, 45, 0.18) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+#section-resume-biography img.object-cover {
+  filter: saturate(1.05) contrast(1.02);
+}
+
+#profile .avatar-wrapper {
+  filter: drop-shadow(0 18px 36px rgba(9, 30, 45, 0.28));
+}
+
+#profile img.avatar {
+  border-radius: 1.25rem !important;
+  border: 3px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 1px rgba(9, 30, 45, 0.06);
+}
+
+.dark #profile img.avatar {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+#profile h1 {
+  letter-spacing: 0.08em;
+  font-size: 2.25rem !important;
+  font-weight: 800;
+}
+
+#profile .hb-ruby-name rt {
+  letter-spacing: 0.14em;
+  opacity: 0.65;
+  display: none; /* 中文姓名无需拼音注音，避免与头像重叠 */
+}
+
+#profile h3 {
+  letter-spacing: 0.03em;
+  color: var(--ql-accent);
+}
+
+/* 简介容器：避免 flex 撑开文本导致移动端横向溢出 */
+#section-resume-biography .d-flex.justify-content-center.prose {
+  display: block !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+#section-resume-biography .bio-text {
+  line-height: 1.9;
+  text-align: left !important;
+  color: #334155;
+  width: 100%;
+  max-width: 44rem !important;
+  margin: 0 auto !important;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.dark #section-resume-biography .bio-text {
+  color: #cbd5e1;
+}
+
+#section-resume-biography .bio-text strong {
+  color: var(--ql-ink);
+}
+
+.dark #section-resume-biography .bio-text strong {
+  color: #e2e8f0;
+}
+
+/* 社交图标：圆形悬浮按钮 */
+#profile ul.network-icon {
+  gap: 0.55rem;
+}
+
+#profile ul.network-icon li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--ql-hairline);
+  background: rgba(255, 255, 255, 0.7);
+  color: #0f172a;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dark #profile ul.network-icon li a {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+#profile ul.network-icon li a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(15, 118, 110, 0.45);
+  box-shadow: 0 10px 22px -14px rgba(15, 118, 110, 0.85);
+}
+
+/* 下载简历：主色胶囊按钮 */
+#profile a[href$="resume.pdf"] {
+  margin-top: 1.15rem !important;
+  padding: 0.7rem 1.6rem !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, var(--ql-accent) 0%, var(--ql-accent-soft) 55%, var(--ql-accent-2) 130%) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 12px 26px -14px rgba(15, 118, 110, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#profile a[href$="resume.pdf"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px -14px rgba(15, 118, 110, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+#profile a[href$="resume.pdf"] svg {
+  color: #ffffff;
+}
+
+/* ------------------------------------------------------------
+   3. 区块标题：统一字号、字距，并加一条渐变装饰短线
+   ------------------------------------------------------------ */
+.hbb-section:not(#section-resume-biography) h2,
+.hbb-section:not(#section-resume-biography) div.text-3xl {
+  letter-spacing: 0.08em !important;
+  font-weight: 800 !important;
+  position: relative;
+}
+
+.hbb-section:not(#section-resume-biography) h2::after,
+.hbb-section:not(#section-resume-biography) div.text-3xl::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin: 0.9rem auto 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--ql-accent), var(--ql-accent-soft));
+}
+
+.hbb-section:not(#section-resume-biography) h2 {
+  margin-bottom: 2.75rem !important;
+}
+
+/* ------------------------------------------------------------
+   4. 卡片刻画：统一圆角、描边、悬浮层次
+   ------------------------------------------------------------ */
+.hbb-section [class*="rounded-xl"][class*="backdrop-blur-sm"] {
+  border-radius: 1rem !important;
+  border-color: var(--ql-hairline) !important;
+  box-shadow: var(--ql-card-shadow);
+  background: #ffffff;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.hbb-section [class*="rounded-xl"][class*="backdrop-blur-sm"]:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ql-card-shadow-hover);
+  border-color: rgba(15, 118, 110, 0.35) !important;
+}
+
+.dark .hbb-section [class*="rounded-xl"][class*="backdrop-blur-sm"] {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: none;
+}
+
+/* 卡片内组织名称：等宽字距，视觉更稳 */
+.hbb-section [class*="backdrop-blur-sm"] p[class*="text-primary-600"] {
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------
+   5. 时间线：主线加粗、节点加光环
+   ------------------------------------------------------------ */
+.hbb-section [class*="from-primary-500"] {
+  width: 3px !important;
+  background: linear-gradient(
+    180deg,
+    var(--ql-accent) 0%,
+    var(--ql-accent-soft) 55%,
+    rgba(3, 105, 161, 0.35) 100%
+  ) !important;
+  border-radius: 3px;
+}
+
+.hbb-section [class*="border-2"][class*="border-primary-500"] {
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.12);
+}
+
+/* ------------------------------------------------------------
+   6. 技能：进度条改为细圆角条
+   ------------------------------------------------------------ */
+.skills-wrapper {
+  height: 6px !important;
+  border-radius: 999px !important;
+  overflow: hidden;
+  border-width: 1px !important;
+  border-style: solid;
+  background: rgba(15, 23, 42, 0.05) !important;
+}
+
+.dark .skills-wrapper {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.skills-percent {
+  border-radius: 999px !important;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skills-content {
+  margin-bottom: 0.6rem !important;
+}
+
+.skills-name {
+  font-size: 0.92rem !important;
+  letter-spacing: 0.01em;
+  text-transform: none !important;
+}
+
+/* 技能分组小标题 */
+#section-resume-skills div.text-xl {
+  letter-spacing: 0.04em;
+  color: var(--ql-ink);
+  border-left: 3px solid var(--ql-accent-soft);
+  padding-left: 0.65rem;
+}
+
+.dark #section-resume-skills div.text-xl {
+  color: #e2e8f0;
+}
+
+/* ------------------------------------------------------------
+   7. 区块底色：形成明暗交替的阅读节奏
+   ------------------------------------------------------------ */
+#section-stats,
+#section-resume-skills {
+  background: linear-gradient(180deg, rgba(241, 245, 249, 0.85), rgba(255, 255, 255, 0));
+}
+
+.dark #section-stats,
+.dark #section-resume-skills {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0));
+}
+
+/* 数据亮点区块：限制宽度，避免桌面端过散 */
+#section-stats .stats-block-container {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+#section-stats .py-8 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#section-stats {
+  padding-bottom: 2.5rem !important;
+}
+
+#section-stats .stats-item {
+  border-radius: 1.1rem !important;
+  border-color: var(--ql-hairline) !important;
+  box-shadow: var(--ql-card-shadow) !important;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s ease !important;
+}
+
+#section-stats .stats-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ql-card-shadow-hover) !important;
+}
+
+/* 数值缩小到卡片宽度可容纳，避免溢出裁切 */
+#section-stats h3.text-4xl {
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em;
+  color: var(--ql-accent) !important;
+  font-weight: 800 !important;
+}
+
+.dark #section-stats h3.text-4xl {
+  color: var(--ql-accent-soft) !important;
+}
+
+#section-stats .p-8 {
+  padding: 1.6rem 1.15rem !important;
+}
+
+/* 图标在圆形底框中居中并放大 */
+#section-stats .w-16 {
+  width: 3.25rem !important;
+  height: 3.25rem !important;
+  margin-bottom: 1rem !important;
+}
+
+#section-stats svg[style*="height:1em"] {
+  height: 1.55rem !important;
+  width: 1.55rem !important;
+}
+
+#section-stats p.mt-2 {
+  font-size: 0.72rem !important;
+  line-height: 1.45 !important;
+}
+
+/* 科研项目：长标题在日期徽章旁自然换行 */
+#section-resume-projects h3 {
+  font-size: 1.08rem !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0.01em;
+}
+
+/* 语言能力：把环形进度改为清爽的语言标签 */
+#section-resume-languages svg {
+  display: none !important;
+}
+
+#section-resume-languages span.absolute {
+  display: none !important;
+}
+
+#section-resume-languages .w-28 {
+  display: none !important;
+}
+
+#section-resume-languages .flex.flex-col.items-center:has(> span.text-1xl) {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid var(--ql-hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.dark #section-resume-languages .flex.flex-col.items-center:has(> span.text-1xl) {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 语言标签容器：任何宽度下都横向排列 */
+#section-resume-languages .flex.items-center.flex-col.lg\:flex-row {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center;
+  gap: 0.6rem !important;
+}
+
+#section-resume-languages span.text-1xl {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--ql-ink);
+}
+
+.dark #section-resume-languages span.text-1xl {
+  color: #e2e8f0;
+}
+
+/* ------------------------------------------------------------
+   8. 正文可读性
+   ------------------------------------------------------------ */
+.hbb-section [class*="prose"] li {
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
+
+.hbb-section [class*="prose"] strong {
+  color: #0f172a;
+}
+
+.dark .hbb-section [class*="prose"] strong {
+  color: #f1f5f9;
+}
+
+/* ------------------------------------------------------------
+   9. 页脚
+   ------------------------------------------------------------ */
+.page-footer footer {
+  border-top: 1px solid var(--ql-hairline);
+  padding-top: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* ------------------------------------------------------------
+   10. 打印：留给 HR 的干净版本
+   ------------------------------------------------------------ */
+@media print {
+  .page-header,
+  .page-footer,
+  #section-resume-biography [class*="sm:h-64"],
+  #profile a[href$="resume.pdf"],
+  #section-stats {
+    display: none !important;
+  }
+
+  .hbb-section {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    break-inside: avoid;
+  }
+
+  .hbb-section [class*="rounded-xl"][class*="backdrop-blur-sm"] {
+    box-shadow: none !important;
+    border-color: #d8dee6 !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

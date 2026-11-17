@@ -37,9 +37,9 @@ hugoblox:
     pack: "default"
     # Optional: Override theme pack colors
     colors:
-      primary: "" # Tailwind palette name or hex (e.g., "indigo" or "#6366f1")
-      secondary: ""
-      neutral: "" # Affects gray utilities (text-gray-*, bg-gray-*)
+      primary: "teal" # 主题主色：深青（沉稳、专业）
+      secondary: "sky"
+      neutral: "slate" # Affects gray utilities (text-gray-*, bg-gray--*)
     # Optional: Mode-specific color overrides
     colors_light: {}
     colors_dark: {}
@@ -68,11 +68,11 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   layout:
     # Border radius: 'none', 'sm', 'md', 'lg', or 'full'
-    radius: "md"
+    radius: "lg"
     # Spacing density: 'compact', 'comfortable', or 'spacious'
     spacing: "comfortable"
     # Avatar shape in author profiles
-    avatar_shape: circle # circle | square | rounded
+    avatar_shape: rounded # circle | square | rounded
 
   # ────────────────────────────────────────────────────────────────────────────
   # HEADER
@@ -81,7 +81,7 @@ hugoblox:
   header:
     enable: true
     # Header style variant
-    style: floating-theme-toggler # navbar | navbar-simple | minimal
+    style: navbar-simple # navbar | navbar-simple | minimal | floating-theme-toggler
     # Stick to top on scroll
     sticky: true
     # Menu alignment
@@ -89,8 +89,8 @@ hugoblox:
     # Feature toggles
     search: false
     theme_toggle: true
-    theme_picker: true
-    language_switcher: true
+    theme_picker: false
+    language_switcher: false
     # Call-to-action button
     cta:
       enable: true
@@ -101,13 +101,12 @@ hugoblox:
   # FOOTER
   # Site footer
   # ────────────────────────────────────────────────────────────────────────────
-  footer:
-    # Footer style variant
-    style: minimal # minimal | columns | centered
-    language_switcher: true
-    # Custom footer text (HTML supported)
-    text: ""
-
+  # footer:
+  #   # Footer style variant
+  #   style: minimal # minimal | columns | centered
+  #   language_switcher: true
+  #   # Custom footer text (HTML supported)
+  #   text: ""
   # ────────────────────────────────────────────────────────────────────────────
   # COPYRIGHT
   # Legal notices and licensing
@@ -115,38 +114,38 @@ hugoblox:
   copyright:
     # Copyright notice - supports {year}, {name}, {license} placeholders
     notice: "© {year} {name}. 保留所有权利。"
-    license:
-      type: cc # cc | custom
-      allow_derivatives: false
-      share_alike: true
-      allow_commercial: false
+  #   license:
+  #     type: cc # cc | custom
+  #     allow_derivatives: false
+  #     share_alike: true
+  #     allow_commercial: false
 
-  # ────────────────────────────────────────────────────────────────────────────
-  # SEO
-  # Search engine optimization - overrides and technical settings
-  # ────────────────────────────────────────────────────────────────────────────
-  seo:
-    # Browser tab title override (defaults to identity.name if not set)
-    title: ""
-    # For local_business identity type only
-    location:
-      address:
-        street: ""
-        city: ""
-        region: ""
-        postal_code: ""
-        country: ""
-      coordinates:
-        latitude: null
-        longitude: null
-      phone: ""
-    # AI/LLM crawler guidance (llms.txt)
-    ai:
-      allow:
-        - /
-      disallow: []
-      note: "Guidance for AI crawlers - customize to match your public content."
-      contact: ""
+  # # ────────────────────────────────────────────────────────────────────────────
+  # # SEO
+  # # Search engine optimization - overrides and technical settings
+  # # ────────────────────────────────────────────────────────────────────────────
+  # seo:
+  #   # Browser tab title override (defaults to identity.name if not set)
+  #   title: ""
+  #   # For local_business identity type only
+  #   location:
+  #     address:
+  #       street: ""
+  #       city: ""
+  #       region: ""
+  #       postal_code: ""
+  #       country: ""
+  #     coordinates:
+  #       latitude: null
+  #       longitude: null
+  #     phone: ""
+  #   # AI/LLM crawler guidance (llms.txt)
+  #   ai:
+  #     allow:
+  #       - /
+  #     disallow: []
+  #     note: "Guidance for AI crawlers - customize to match your public content."
+  #     contact: ""
 
   # ────────────────────────────────────────────────────────────────────────────
   # CONTENT
